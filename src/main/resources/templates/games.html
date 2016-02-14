@@ -1,0 +1,64 @@
+
+<div class="thymeleafContentContainer" th:fragment="thymeleafContent"  th:inline="text">
+	<head>
+		<script th:inline="javascript">
+		window.history_msg_pageselector1 = [[#{msg.pageselector1}]];
+		window.history_msg_pageselector2 = [[#{msg.pageselector2}]];
+		window.history_msg_pageselector3 = [[#{msg.pageselector3}]];
+		</script>
+		<script type="text/javascript" src="../js/games.js"></script>
+	</head>	
+	
+	<div data-role="page" id="games" th:attr="data-title=#{blank.games}">
+	    <div class="ui-content jqm-content jqm-fullwidth" role="main">
+			<div>
+				<div>
+					 <label id="currentPageIndex"></label>
+				</div>
+				<table>
+					<tr>
+						<td><a href="#page-selector" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow" data-rel="popup" data-position-to="window" data-transition="pop">[[#{btn.pageselector}]]</a></td>
+						<td><a href="#dialog-games-create" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-plus ui-btn-icon-notext ui-corner-all">No text</a></td>
+					</tr>
+				</table>
+				<div data-role="popup" id="page-selector" data-overlay-theme="b" class="ui-content">
+					<table><tr><td>
+						<label id="currentPageIndex1"></label>
+						<input id="games-selector-page" data-clear-btn="]" type="number" onchange="" value="1" min="1"/>
+						<label id="currentPageIndex2"></label>
+					</td></tr></table>
+					<a id="games-btn-display-page" href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow">[[#{ok}]]</a>
+					<a href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow" data-rel="back">[[#{cancel}]]</a>
+				</div>
+			</div>
+			
+			<div>
+				<table data-role="table" id="table-games" data-mode="columntoggle" class="ui-responsive table-stroke" th:attr="data-column-btn-text=#{th.btn.colsel}">
+					<thead>
+						<tr>
+							<th>[[#{detail}]]</th>
+							<th data-priority="1">[[#{Id}]]</th>
+							<th>[[#{Time}]]</th>
+							<th data-priority="2">[[#{delete}]]</th>
+						</tr>
+		 			</thead>
+		 			<tbody id="tbProp">
+						
+					</tbody>
+			   </table>
+			</div>
+			
+			<div id="dialog-games-create" data-role="popup" data-overlay-theme="b" class="ui-content">
+				<a id="btn-create-game" href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow">[[#{create}]]</a>
+				<a href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow ui-icon-delete" data-rel="back">[[#{cancel}]]</a>
+			</div>
+			
+			<div id="dialog-games-delete" data-role="popup" data-overlay-theme="b" class="ui-content">
+				[[#{Id}]]<input id="delete-input-id" type="text" name="id" readonly="true"/>
+				[[#{Time}]]<input id="delete-input-time" type="text" name="time" readonly="true"/> 
+				<a id="btn-delete-game" href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow">[[#{delete}]]</a>
+				<a href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow ui-icon-delete" data-rel="back">[[#{cancel}]]</a>
+			</div>
+		</div><!-- /content -->
+	</div><!-- /page -->
+</div>

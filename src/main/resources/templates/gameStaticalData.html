@@ -1,0 +1,68 @@
+
+<div class="thymeleafContentContainer" th:fragment="thymeleafContent"  th:inline="text">
+	<head>
+		<script th:inline="javascript">
+		
+		</script>
+		<script type="text/javascript" src="../js/gameStaticalData.js"></script>
+	</head>	
+	
+	<div data-role="page" id="gameStaticalData" th:attr="data-title=#{blank.gameStaticalData}">
+	    <div class="ui-content jqm-content jqm-fullwidth" role="main">
+	    	<option id="gameId" th:title="${gameId}" hidden="true"></option>
+	    	<a id="pop-up-btn-add-player" href="#" class="ui-btn ui-icon-plus ui-btn-icon-notext ui-corner-all">No text</a>
+			<div>
+				<table data-role="table" id="table-game-statical-data" data-mode="columntoggle" class="ui-responsive table-stroke" th:attr="data-column-btn-text=#{th.btn.colsel}">
+					<thead>
+						<tr>
+							<th data-priority="3">[[#{game.GameTableContainer.gameStaticalDataId}]]</th>
+							<th data-priority="5">[[#{game.GameTableContainer.gameId}]]</th>
+							<th data-priority="4">[[#{game.GameTableContainer.playerId}]]</th>
+							<th>[[#{game.GameTableContainer.playerName}]]</th>
+							<th>[[#{game.GameTableContainer.miss}]]</th>
+							<th>[[#{game.GameTableContainer.score}]]</th>
+							<th  data-priority="1">[[#{game.GameTableContainer.ratio}]]</th>
+							<th  data-priority="2">[[#{game.GameTableContainer.victory}]]</th>
+							<th  data-priority="6">[[#{delete}]]</th>
+						</tr>
+					</thead>
+		 			<tbody id="tbProp">
+						
+					</tbody>
+			   </table>
+			</div>
+			
+			<div id="dialog-add-player" data-role="popup" data-overlay-theme="b" class="ui-content">
+				<a id="btn-get-player-previous" href="#" class="ui-btn ui-icon-arrow-u ui-btn-icon-notext ui-corner-all">No text</a>
+   				<fieldset id="fieldset-player-add-player" data-role="controlgroup">
+   				</fieldset>
+   				<a id="btn-get-player-next" href="#" class="ui-btn ui-icon-arrow-d ui-btn-icon-notext ui-corner-all">No text</a>
+				<a id="btn-add-players" href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow">[[#{add}]]</a>
+				<a href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow ui-icon-delete" data-rel="back">[[#{cancel}]]</a>
+			</div>
+			
+			<div id="dialog-change-victory" data-role="popup" data-overlay-theme="b" class="ui-content">
+   				<fieldset id="fieldset-player-change-victory" data-role="controlgroup">
+   				</fieldset>
+				<a value="1" href="#" class="btn-change-victory ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow">[[#{game.victory}]]</a>
+				<a value="0" href="#" class="btn-change-victory ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow">[[#{game.loss}]]</a>
+				<a href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow ui-icon-delete" data-rel="back">[[#{cancel}]]</a>
+			</div>
+			
+			<div id="dialog-player-remove" data-role="popup" data-overlay-theme="b" class="ui-content">
+				[[#{game.GameTableContainer.gameStaticalDataId}]]<input id="remove-input-id" type="text" readonly="true"/>
+				[[#{game.GameTableContainer.gameId}]]<input id="remove-input-gameId" type="text" readonly="true"/>
+				[[#{game.GameTableContainer.playerId}]]<input id="remove-input-playerId" type="text" readonly="true"/>
+				[[#{game.GameTableContainer.playerName}]]<input id="remove-input-playerName" type="text" readonly="true"/>
+				<a id="btn-remove-player" href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow">[[#{remove}]]</a>
+				<a href="#" class="ui-btn ui-btn-inline ui-mini ui-corner-all ui-shadow ui-icon-delete" data-rel="back">[[#{cancel}]]</a>
+			</div>
+			
+			<a id="pop-up-btn-change-victory" href="#" class="ui-btn ui-btn-inline">[[#{game.result}]]</a>
+			<a id="pop-up-btn-copy-content" href="#" class="ui-btn ui-icon-mail ui-btn-icon-notext ui-corner-all">Copy Result</a>
+			<div id="dialog-copy-content" data-role="popup" data-overlay-theme="b" class="ui-content">
+			</div>
+			
+		</div><!-- /content -->
+	</div><!-- /page -->
+</div>

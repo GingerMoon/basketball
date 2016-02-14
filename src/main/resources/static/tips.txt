@@ -1,0 +1,24 @@
+Tips:
+-----------------------------------------------------------------------
+1. In thymeleaf javascript code, "<" is illegal. Please use ">" instead.
+If(1 < 2) // Error!
+If(2 > 1) // Correct!
+
+-----------------------------------------------------------------------
+2. The js file name cannot be the same as the HTML file name which include this js file.
+
+!Error coldDish.html
+	<script type="text/javascript" src="../coldDish.js"></script>
+
+The js file return by the spring server will be the same as coldDish.html.
+
+!Correct coldDish.html
+	<script type="text/javascript" src="../orderDish.js"></script>
+-----------------------------------------------------------------------
+3. Cart item: display the count at the top right corner.
+CSS
+display: inline-block;
+-----------------------------------------------------------------------
+4. There is a conflict in the dialog box background color between jtable/jquery ui and jquery mobile.
+jquery-mobile/css/themes/default/jquery.mobile-1.4.5.min.css was changed.
+-----------------------------------------------------------------------	

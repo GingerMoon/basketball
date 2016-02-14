@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title th:text="#{blank.title}"></title>
+	
+	<link rel="shortcut icon" href="../favicon.ico"/>
+	<link rel="stylesheet" href="../jquery-mobile/css/themes/default/jquery.mobile-1.4.5.min.css"/>
+	
+	<script src="../jquery-mobile/js/jquery.js"></script>	
+	<script src="../jquery-mobile/js/jquery.mobile-1.4.5.min.js"></script>
+	
+	<link href="../toastr/toastr.min.css" rel="stylesheet"/>
+	<script src="../toastr/toastr.min.js"></script>
+	
+	<script src="../js/blank.js"></script>
+</head>
+<body th:inline="text">
+	<div data-role="header" data-position="fixed" data-tap-toggle="true" data-theme="a">
+    	<a href="#configuration" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a ui-btn-left" data-transition="pop">[[#{blank.config}]]</a>
+        <h1 th:if="${account.username} == ''" id="h1Login" th:inline="text">[[#{blank.welcome.pleaselogin}]]</h1>
+        <h1 th:if="${account.username} != ''" id="h1Welcome" th:inline="text">[[#{blank.welcome} + ${account.username} + ' !']]</h1>
+        <a th:if="${account.username} == ''" id="btnLogin" href="#popupLogin" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-right ui-btn-a ui-btn-right" data-transition="pop">[[#{blank.login}]]</a>
+        <a th:if="${account.username} != ''" id="btnLogout" href="#popupLogout" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-right ui-btn-a ui-btn-right" data-transition="pop">[[#{blank.logout}]]</a>
+		<div data-role="popup" id="configuration" data-theme="a" class="ui-corner-all">
+		   <ul data-role="listview" data-inset="true">
+  				<li><a href="?lang=en_US" class="selected" data-ajax="false"><img src="../images/en_US.png" alt="" title="" border="0" class="ui-li-icon ui-corner-none"></img>English</a></li>
+  				<li><a href="?lang=zh_CN" data-ajax="false"><img src="../images/zh_CN.png" alt="" title="" border="0" class="ui-li-icon ui-corner-none"></img>中文</a></li>
+  			</ul>
+		</div>
+		<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
+		    <form action="/login" method="post" data-ajax="false">
+		        <div style="padding:10px 20px;">
+		            <h3>[[#{blank.login}]]</h3>
+		            <label for="un" class="ui-hidden-accessible">[[#{login.username}]]</label>
+		            <input name="username" id="un" value="" placeholder="username" data-theme="a" type="text"/>
+		            <label for="pw" class="ui-hidden-accessible">[[#{login.password}]]</label>
+		            <input name="password" id="pw" value="" placeholder="password" data-theme="a" type="password"/>
+		            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">[[#{ok}]]</button>
+		        </div>
+		    </form>
+		</div>
+		<div data-role="popup" id="popupLogout" data-theme="a" class="ui-corner-all">
+		    <form action="/logout" method="post" data-ajax="false">
+		        <div style="padding:10px 20px;">
+		            <h3>[[#{blank.logout}]]</h3>
+		            <p>[[#{blank.confirmInfoLogout}]]</p>
+		            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">[[#{ok}]]</button>
+		        </div>
+		    </form>
+		</div>
+    </div><!-- /header -->
+	
+	<div id="thymeleafContent">
+		<div th:replace="${view} :: thymeleafContent"></div>
+	</div>
+	
+	<div data-role="footer" data-position="fixed" data-theme="a">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="/player/" data-icon="user" data-position="fixed" data-ajax="false">[[#{blank.player}]]</a></li>
+				<li><a href="/games/" data-icon="grid" data-position="fixed" data-ajax="false">[[#{blank.games}]]</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+
+</body>
+</html>
